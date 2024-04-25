@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Install required libraries
       run: brew update && brew install nspr
+    - name: Check c++ version
+      run: c++ --version
     - name: Check prtypes.h location
       run: find / -type f -name prtypes.h 2>/dev/null || true
     - name: Look for nspr
