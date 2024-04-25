@@ -21,3 +21,5 @@ jobs:
       run: brew update && brew install nspr
     - name: Check prtypes.h location
       run: find / -type f -name prtypes.h 2>/dev/null || true
+    - name: Look for nspr
+      run: find / -name nspr -exec realpath {} \; 2>/dev/null || true
