@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+        - macos-12
+        - macos-14
+        - macos-latest
+
+    steps:
+    - name: Install required libraries
+      run: brew update && brew install nspr
+    - name: Check prtypes.h location
+      run: find / -type f -name prtypes.h
